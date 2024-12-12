@@ -87,18 +87,9 @@ public class IA : MonoBehaviour
         // Aplicar movimiento en base a las salidas de la IA
         Vector3 moveDirection = Vector3.zero;
     
-        // Si la aceleración es positiva, avanzar
-        if (acceleration != 0)
-        {
-            moveDirection += Vector3.forward * acceleration;
-        }
-        // Si la aceleración vertical es positiva, subir
-        if (accelerationV != 0)
-        {
-            moveDirection += Vector3.up * accelerationV;
-        }
-        // Rotación: La red neuronal ya retorna un valor para rotación
-        transform.eulerAngles += new Vector3(0, rotation * 90 * Time.deltaTime* Time.timeScale, 0);
+        moveDirection += Vector3.forward * acceleration;//aceleración
+        moveDirection += Vector3.up * accelerationV;//altitud
+        transform.eulerAngles += new Vector3(0, rotation * 90 * Time.deltaTime* Time.timeScale, 0);//rotación
     
         // Aplicar movimiento con la velocidad ajustada por el tiempo
         transform.Translate(moveDirection * Time.deltaTime* Time.timeScale);
